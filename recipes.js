@@ -13,7 +13,7 @@
 /*
 MASTER CARD EXAMPLES:
   {
-    id: "master-chicken-thigh-rice",
+    id: "master-chicken-rice",
     displayNum: 200,
     carb: "rice",
     time: 30,
@@ -27,7 +27,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-chicken-thigh-potato",
+    id: "master-chicken-potato",
     displayNum: 201,
     carb: "potato",
     time: 30,
@@ -41,7 +41,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-chicken-thigh-noodle",
+    id: "master-chicken-noodle",
     displayNum: 202,
     carb: "noodle",
     time: 30,
@@ -55,7 +55,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-chicken-thigh-bread",
+    id: "master-chicken-bread",
     displayNum: 203,
     carb: "bread",
     time: 30,
@@ -69,7 +69,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-chicken-breast-rice",
+    id: "master-chicken-rice",
     displayNum: 204,
     carb: "rice",
     time: 30,
@@ -83,7 +83,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-chicken-breast-potato",
+    id: "master-chicken-potato",
     displayNum: 205,
     carb: "potato",
     time: 30,
@@ -97,7 +97,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-chicken-breast-noodle",
+    id: "master-chicken-noodle",
     displayNum: 206,
     carb: "noodle",
     time: 30,
@@ -111,7 +111,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-chicken-breast-bread",
+    id: "master-chicken-bread",
     displayNum: 207,
     carb: "bread",
     time: 30,
@@ -125,7 +125,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-beef-regular-rice",
+    id: "master-beef-rice",
     displayNum: 208,
     carb: "rice",
     time: 30,
@@ -139,7 +139,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-beef-regular-potato",
+    id: "master-beef-potato",
     displayNum: 209,
     carb: "potato",
     time: 30,
@@ -153,7 +153,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-beef-regular-noodle",
+    id: "master-beef-noodle",
     displayNum: 210,
     carb: "noodle",
     time: 30,
@@ -167,7 +167,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-beef-regular-bread",
+    id: "master-beef-bread",
     displayNum: 211,
     carb: "bread",
     time: 30,
@@ -181,7 +181,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-beef-lean-rice",
+    id: "master-beef-rice",
     displayNum: 212,
     carb: "rice",
     time: 30,
@@ -195,7 +195,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-beef-lean-potato",
+    id: "master-beef-potato",
     displayNum: 213,
     carb: "potato",
     time: 30,
@@ -209,7 +209,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-beef-lean-noodle",
+    id: "master-beef-noodle",
     displayNum: 214,
     carb: "noodle",
     time: 30,
@@ -223,7 +223,7 @@ MASTER CARD EXAMPLES:
     sauce_f: 3,
   },
   {
-    id: "master-beef-lean-bread",
+    id: "master-beef-bread",
     displayNum: 215,
     carb: "bread",
     time: 30,
@@ -366,7 +366,7 @@ const R = [
   sauce_f: 3,
 },
 {
-  id: "korean-gochujang-chicken-thigh-bowl",
+  id: "korean-gochujang-chicken-bowl",
   displayNum: 2,
   carb: "rice",
   time: 30,
@@ -380,7 +380,7 @@ const R = [
   sauce_f: 4,
 },
 {
-  id: "thai-basil-chicken-thigh-rice",
+  id: "thai-basil-chicken-rice",
   displayNum: 3,
   carb: "rice",
   time: 25,
@@ -394,7 +394,7 @@ const R = [
   sauce_f: 5,
 },
 {
-  id: "shawarma-chicken-thigh-wrap",
+  id: "shawarma-chicken-wrap",
   displayNum: 4,
   carb: "bread",
   time: 35,
@@ -408,7 +408,7 @@ const R = [
   sauce_f: 7,
 },
 {
-  id: "japanese-teriyaki-chicken-thigh",
+  id: "japanese-teriyaki-chicken",
   displayNum: 5,
   carb: "rice",
   time: 25,
@@ -422,7 +422,7 @@ const R = [
   sauce_f: 2,
 },
 {
-  id: "chipotle-lime-chicken-thigh-bowl",
+  id: "chipotle-lime-chicken-bowl",
   displayNum: 6,
   carb: "rice",
   time: 30,
@@ -436,7 +436,7 @@ const R = [
   sauce_f: 6,
 },
 {
-  id: "honey-garlic-chicken-thigh-noodles",
+  id: "honey-garlic-chicken-noodles",
   displayNum: 7,
   carb: "noodle",
   time: 25,
@@ -450,7 +450,7 @@ const R = [
   sauce_f: 4,
 },
 {
-  id: "mediterranean-chicken-thigh-potato",
+  id: "mediterranean-chicken-potato",
   displayNum: 8,
   carb: "potato",
   time: 45,
@@ -464,7 +464,7 @@ const R = [
   sauce_f: 8,
 },
 {
-  id: "indian-tikka-chicken-thigh-rice",
+  id: "indian-tikka-chicken-rice",
   displayNum: 9,
   carb: "rice",
   time: 35,
@@ -478,7 +478,7 @@ const R = [
   sauce_f: 8,
 },
 {
-  id: "chinese-five-spice-chicken-thigh-rice",
+  id: "chinese-five-spice-chicken-rice",
   displayNum: 10,
   carb: "rice",
   time: 30,
@@ -492,7 +492,7 @@ const R = [
   sauce_f: 5,
 },
 {
-  id: "bbq-chicken-thigh-smashed-potato",
+  id: "bbq-chicken-smashed-potato",
   displayNum: 11,
   carb: "potato",
   time: 40,
@@ -650,7 +650,7 @@ const R = [
 
 
 {
-  id: "korean-dakgalbi-chicken-breast-noodle",
+  id: "korean-dakgalbi-chicken-noodle",
   displayNum: 22,
   carb: "noodle",
   time: 30,
@@ -678,7 +678,7 @@ const R = [
   sauce_f: 9,
 },
 {
-  id: "thai-peanut-chicken-breast-rice",
+  id: "thai-peanut-chicken-rice",
   displayNum: 24,
   carb: "rice",
   time: 25,
@@ -692,7 +692,7 @@ const R = [
   sauce_f: 9,
 },
 {
-  id: "lemon-herb-chicken-breast-potato",
+  id: "lemon-herb-chicken-potato",
   displayNum: 25,
   carb: "potato",
   time: 35,
@@ -706,7 +706,7 @@ const R = [
   sauce_f: 6,
 },
 {
-  id: "chinese-kung-pao-chicken-breast-rice",
+  id: "chinese-kung-pao-chicken-rice",
   displayNum: 26,
   carb: "rice",
   time: 25,
@@ -720,7 +720,7 @@ const R = [
   sauce_f: 5,
 },
 {
-  id: "chicken-breast-tikka-naan",
+  id: "chicken-tikka-naan",
   displayNum: 27,
   carb: "bread",
   time: 35,
@@ -734,7 +734,7 @@ const R = [
   sauce_f: 6,
 },
 {
-  id: "japanese-chicken-breast-katsu-rice",
+  id: "japanese-chicken-katsu-rice",
   displayNum: 28,
   carb: "rice",
   time: 30,
@@ -762,7 +762,7 @@ const R = [
   sauce_f: 4,
 },
 {
-  id: "chicken-breast-stir-fry-noodles",
+  id: "chicken-stir-fry-noodles",
   displayNum: 30,
   carb: "noodle",
   time: 20,
@@ -776,7 +776,7 @@ const R = [
   sauce_f: 3,
 },
 {
-  id: "chicken-breast-shawarma-potato",
+  id: "chicken-shawarma-potato",
   displayNum: 31,
   carb: "potato",
   time: 40,
@@ -997,7 +997,7 @@ const RECIPE_DETAILS = {
     ],
     notes: "Spice level: 1.5 tbsp gochujang = medium — adjust to taste. Meal prep: sauce lasts 5 days refrigerated, chicken and rice store well for 3 days.",
   },
-"korean-gochujang-chicken-thigh-bowl": {
+"korean-gochujang-chicken-bowl": {
   image: null,
   video: null,
   ingredients: [
@@ -1034,7 +1034,7 @@ const RECIPE_DETAILS = {
   notes: "Leftovers keep 3 days in the fridge. Add a fried egg on top for an extra protein hit. Adjust gochujang to taste — 1 tbsp is mild, 3 tbsp is fiery.",
 },
 
-"thai-basil-chicken-thigh-rice": {
+"thai-basil-chicken-rice": {
   image: null,
   video: null,
   ingredients: [
@@ -1073,7 +1073,7 @@ const RECIPE_DETAILS = {
   notes: "Thai basil available at Asian supermarkets in Frankfurt. Regular Italian basil works as a substitute but the flavour is milder. Best eaten immediately — the basil wilts if it sits.",
 },
 
-"shawarma-chicken-thigh-wrap": {
+"shawarma-chicken-wrap": {
   image: null,
   video: null,
   ingredients: [
@@ -1120,7 +1120,7 @@ const RECIPE_DETAILS = {
   notes: "Flatbread available at every Turkish supermarket in Frankfurt. The marinade can be made the night before — overnight gives deeper colour and flavour.",
 },
 
-"japanese-teriyaki-chicken-thigh": {
+"japanese-teriyaki-chicken": {
   image: null,
   video: null,
   ingredients: [
@@ -1158,7 +1158,7 @@ const RECIPE_DETAILS = {
   notes: "Mirin available at REWE Asia section or Asian supermarkets. Substitute with 2 tbsp dry white wine + 1 tsp sugar if unavailable.",
 },
 
-"chipotle-lime-chicken-thigh-bowl": {
+"chipotle-lime-chicken-bowl": {
   image: null,
   video: null,
   ingredients: [
@@ -1201,7 +1201,7 @@ const RECIPE_DETAILS = {
   notes: "Black beans available canned at all major German supermarkets. Chipotle paste at REWE or Edeka world foods aisle. This bowl works great for meal prep — store components separately.",
 },
 
-"honey-garlic-chicken-thigh-noodles": {
+"honey-garlic-chicken-noodles": {
   image: null,
   video: null,
   ingredients: [
@@ -1242,7 +1242,7 @@ const RECIPE_DETAILS = {
   notes: "Fresh udon noodles available in the chiller section at Asian supermarkets in Frankfurt. Dried udon works equally well. Bok choy at Asia-Markt.",
 },
 
-"mediterranean-chicken-thigh-potato": {
+"mediterranean-chicken-potato": {
   image: null,
   video: null,
   ingredients: [
@@ -1278,7 +1278,7 @@ const RECIPE_DETAILS = {
   notes: "Drillinge potatoes available at all German supermarkets. Kalamata olives are optional — skip if tracking fat tightly. This dish reheats well the next day.",
 },
 
-"indian-tikka-chicken-thigh-rice": {
+"indian-tikka-chicken-rice": {
   image: null,
   video: null,
   ingredients: [
@@ -1320,7 +1320,7 @@ const RECIPE_DETAILS = {
   notes: "All spices available at REWE, Edeka, or Indian grocery stores in Frankfurt. This dish reheats excellently — great for meal prep.",
 },
 
-"chinese-five-spice-chicken-thigh-rice": {
+"chinese-five-spice-chicken-rice": {
   image: null,
   video: null,
   ingredients: [
@@ -1357,7 +1357,7 @@ const RECIPE_DETAILS = {
   notes: "Five-spice powder available at REWE Asia section or Asian supermarkets. Hoisin sauce in the world foods aisle at most German supermarkets.",
 },
 
-"bbq-chicken-thigh-smashed-potato": {
+"bbq-chicken-smashed-potato": {
   image: null,
   video: null,
   ingredients: [
@@ -1790,7 +1790,7 @@ const RECIPE_DETAILS = {
 
 
 
-"korean-dakgalbi-chicken-breast-noodle": {
+"korean-dakgalbi-chicken-noodle": {
   image: null,
   video: null,
   ingredients: [
@@ -1867,7 +1867,7 @@ const RECIPE_DETAILS = {
   notes: "Brine the chicken breast in salted water for 15 minutes before cooking if you have time — it makes a noticeable difference in juiciness. The dressing keeps refrigerated for 3 days.",
 },
 
-"thai-peanut-chicken-breast-rice": {
+"thai-peanut-chicken-rice": {
   image: null,
   video: null,
   ingredients: [
@@ -1912,7 +1912,7 @@ const RECIPE_DETAILS = {
   notes: "Crushed peanuts available pre-roasted at Asian supermarkets. Peanut sauce keeps refrigerated 3 days — thin with water when reusing. The pickled cucumber can be made up to 2 hours ahead.",
 },
 
-"lemon-herb-chicken-breast-potato": {
+"lemon-herb-chicken-potato": {
   image: null,
   video: null,
   ingredients: [
@@ -1949,7 +1949,7 @@ const RECIPE_DETAILS = {
   notes: "A meat thermometer is the best investment for cooking chicken breast — pull at exactly 74°C for perfect juiciness every single time.",
 },
 
-"chinese-kung-pao-chicken-breast-rice": {
+"chinese-kung-pao-chicken-rice": {
   image: null,
   video: null,
   ingredients: [
@@ -1991,7 +1991,7 @@ const RECIPE_DETAILS = {
   notes: "Dried red chilis in the spice aisle of any supermarket or at Asian supermarkets. Use pre-roasted peanuts — raw peanuts won't have the same texture or flavour.",
 },
 
-"chicken-breast-tikka-naan": {
+"chicken-tikka-naan": {
   image: null,
   video: null,
   ingredients: [
@@ -2037,7 +2037,7 @@ const RECIPE_DETAILS = {
   notes: "Naan available at REWE, Edeka, and Turkish supermarkets. Marinating overnight gives the best flavour and colour. Mint chutney keeps refrigerated for 3 days.",
 },
 
-"japanese-chicken-breast-katsu-rice": {
+"japanese-chicken-katsu-rice": {
   image: null,
   video: null,
   ingredients: [
@@ -2125,7 +2125,7 @@ const RECIPE_DETAILS = {
   notes: "All ingredients available at REWE, Edeka, or Aldi. Excellent for meal prep — store rice, chicken, and toppings separately. Crema keeps refrigerated 3 days.",
 },
 
-"chicken-breast-stir-fry-noodles": {
+"chicken-stir-fry-noodles": {
   image: null,
   video: null,
   ingredients: [
@@ -2164,7 +2164,7 @@ const RECIPE_DETAILS = {
   notes: "Egg noodles in the world foods aisle at REWE and at Asian supermarkets. Bean sprouts from the chilled section at Asian supermarkets or Edeka.",
 },
 
-"chicken-breast-shawarma-potato": {
+"chicken-shawarma-potato": {
   image: null,
   video: null,
   ingredients: [
