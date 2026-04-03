@@ -1,114 +1,15 @@
 // ============================================================
-//  recipes.js — FIT NIIKITER'S RECIPE VAULT
-//  Version: 2.0 | Maintainer: fitniikiter
-// ============================================================
-//
-//  IMPORTANT — READ BEFORE EDITING
-//
-//  This file contains all recipe data for the Recipe Vault app.
-//  It is loaded by index.html via <script src="recipes.js">
-//
-//  HOW IT WORKS:
-//  - PART 1 (const R):              Recipe cards shown on the main page
-//  - PART 2 (const RECIPE_DETAILS): Full recipe data (ingredients, steps, hacks)
-//  - Every recipe needs an entry in BOTH parts with the SAME id.
-//
-// ============================================================
-//  RULES FOR ADDING RECIPES
-// ============================================================
-//
-//  1. ID:
-//     - Lowercase, hyphens only, no spaces or special chars
-//     - Must be unique and identical in R[] and RECIPE_DETAILS
-//     - Example: "korean-beef-bibimbap-bowl"
-//
-//  2. displayNum:
-//     - Sequential number shown as #001, #002 etc.
-//     - Always increment from the last recipe (currently last is 41)
-//     - Next recipe = displayNum: 42
-//
-//  3. carb:
-//     - ONLY these 4 values allowed: "rice" | "potato" | "noodle" | "bread"
-//
-//  4. flavor:
-//     - ONLY: "savory" | "sweet"
-//
-//  5. tags:
-//     - Choose from: "korean" | "japanese" | "chinese" | "thai" | "asian" |
-//       "american" | "mexican" | "indian" | "middle-eastern" |
-//       "mediterranean" | "comfort" | "fusion"
-//
-//  6. sauce_kcal / sauce_p / sauce_c / sauce_f:
-//     - Estimated macros from sauce/seasonings ONLY
-//     - Do NOT include protein source or carb base here
-//     - Keep realistic: most sauces = 50-150 kcal
-//
-//  7. {{proteinG}} and {{carbG}}:
-//     - Always write EXACTLY like this in ingredient amounts
-//     - The app replaces them with the user's selected gram values
-//     - Example: amt: "{{proteinG}}g raw"  or  amt: "{{carbG}}g"
-//
-//  8. Ingredient names:
-//     - Write in ENGLISH using standard names
-//     - The app auto-maps ingredient names to filter categories
-//     - Use common names: "Soy sauce", "Butter", "Fish sauce", "Mirin" etc.
-//     - WRONG: "Sojasauce", "Beurre", "Nam pla" — filters won't work
-//     - Protein section name should always be one of:
-//       "Boneless skinless chicken thighs"  (chicken recipes)
-//       "Ground beef (20% fat)"             (beef recipes)
-//       These get dynamically replaced by the app based on user selection
-//
-//  9. steps:
-//     - Array of strings, each step a complete sentence or short paragraph
-//     - No numbering needed, the app adds numbers automatically
-//
-//  10. hacks:
-//      - Max 2-3 per recipe
-//      - title: short label (e.g. "Wok hack")
-//      - text: the actual 80/20 tip, 1-3 sentences
-//
-//  11. notes:
-//      - Optional. Storage tips, spice level, substitutions
-//      - Use null if nothing to add
-//
-//  12. video:
-//      - YouTube video ID only (e.g. "I5BZybb9bpM")
-//      - NOT the full URL — just the part after "?v="
-//      - Use null if no video
-//
-//  13. image:
-//      - Full URL to image (Cloudflare R2, Imgur, etc.)
-//      - Use null if no image (app uses YouTube thumbnail if video exists)
-//
-// ============================================================
-//  FILTERS — FULLY AUTOMATIC
-// ============================================================
-//
-//  You do NOT need to manually update any filter maps.
-//  The app automatically scans all ingredient names and maps them
-//  to the correct dietary filters at runtime.
-//
-//  As long as you use standard English ingredient names, all filters
-//  work correctly: No Alcohol, Gluten-Free, Dairy-Free, No Soy,
-//  No Fish, Nut-Free, Vegetarian, Vegan, Low Spice, etc.
-//
-//  Alcohol badge is automatic:
-//  Any recipe with "Mirin", "Sake", or "White wine" in ingredients
-//  automatically gets the Alcohol badge — no extra work needed.
-//
-// ============================================================
-//  WHEN ASKING AN AI TO GENERATE RECIPES
-// ============================================================
-//
-//  Give the AI this file + your list of recipe ideas.
-//  Ask for output in two blocks:
-//  1. All PART 1 entries (to insert into const R = [...])
-//  2. All PART 2 entries (to insert into const RECIPE_DETAILS = {...})
-//  Pure JavaScript only — no markdown, no extra text.
-//  The AI should follow all rules above exactly.
-//
+//  recipes.js — Recipe Vault Data
+//  Edit this file to add/remove/change recipes.
+//  This file is loaded by index.html via <script src="recipes.js">
 // ============================================================
 
+// --- RECIPE CARDS (shown on main page) ---
+
+// ============================================================
+//  MASTER TEMPLATES — KI Referenz (nicht im Browser sichtbar)
+//  Diese Karten zeigen die Struktur — nicht in R[] eingebunden
+// ============================================================
 /*
 MASTER CARD EXAMPLES:
   {
@@ -116,8 +17,8 @@ MASTER CARD EXAMPLES:
     displayNum: 200,
     carb: "rice",
     time: 30,
-    title: "[MASTER] Chicken Thigh + Rice",
-    desc: "Master template — Chicken Thigh with Rice.",
+    title: "[MASTER] Chicken + Rice",
+    desc: "Master template — Chicken with Rice.",
     tags: ["chicken"],
     flavor: "savory",
     sauce_kcal: 80,
@@ -130,8 +31,8 @@ MASTER CARD EXAMPLES:
     displayNum: 201,
     carb: "potato",
     time: 30,
-    title: "[MASTER] Chicken Thigh + Potato",
-    desc: "Master template — Chicken Thigh with Potato.",
+    title: "[MASTER] Chicken + Potato",
+    desc: "Master template — Chicken with Potato.",
     tags: ["chicken"],
     flavor: "savory",
     sauce_kcal: 80,
@@ -144,8 +45,8 @@ MASTER CARD EXAMPLES:
     displayNum: 202,
     carb: "noodle",
     time: 30,
-    title: "[MASTER] Chicken Thigh + Noodles",
-    desc: "Master template — Chicken Thigh with Noodles.",
+    title: "[MASTER] Chicken + Noodles",
+    desc: "Master template — Chicken with Noodles.",
     tags: ["chicken"],
     flavor: "savory",
     sauce_kcal: 80,
@@ -158,8 +59,8 @@ MASTER CARD EXAMPLES:
     displayNum: 203,
     carb: "bread",
     time: 30,
-    title: "[MASTER] Chicken Thigh + Bread",
-    desc: "Master template — Chicken Thigh with Bread.",
+    title: "[MASTER] Chicken + Bread",
+    desc: "Master template — Chicken with Bread.",
     tags: ["chicken"],
     flavor: "savory",
     sauce_kcal: 80,
@@ -172,8 +73,8 @@ MASTER CARD EXAMPLES:
     displayNum: 204,
     carb: "rice",
     time: 30,
-    title: "[MASTER] Chicken Breast + Rice",
-    desc: "Master template — Chicken Breast with Rice.",
+    title: "[MASTER] Chicken + Rice",
+    desc: "Master template — Chicken with Rice.",
     tags: ["chicken"],
     flavor: "savory",
     sauce_kcal: 80,
@@ -186,8 +87,8 @@ MASTER CARD EXAMPLES:
     displayNum: 205,
     carb: "potato",
     time: 30,
-    title: "[MASTER] Chicken Breast + Potato",
-    desc: "Master template — Chicken Breast with Potato.",
+    title: "[MASTER] Chicken + Potato",
+    desc: "Master template — Chicken with Potato.",
     tags: ["chicken"],
     flavor: "savory",
     sauce_kcal: 80,
@@ -200,8 +101,8 @@ MASTER CARD EXAMPLES:
     displayNum: 206,
     carb: "noodle",
     time: 30,
-    title: "[MASTER] Chicken Breast + Noodles",
-    desc: "Master template — Chicken Breast with Noodles.",
+    title: "[MASTER] Chicken + Noodles",
+    desc: "Master template — Chicken with Noodles.",
     tags: ["chicken"],
     flavor: "savory",
     sauce_kcal: 80,
@@ -214,8 +115,8 @@ MASTER CARD EXAMPLES:
     displayNum: 207,
     carb: "bread",
     time: 30,
-    title: "[MASTER] Chicken Breast + Bread",
-    desc: "Master template — Chicken Breast with Bread.",
+    title: "[MASTER] Chicken + Bread",
+    desc: "Master template — Chicken with Bread.",
     tags: ["chicken"],
     flavor: "savory",
     sauce_kcal: 80,
@@ -469,8 +370,8 @@ const R = [
   displayNum: 2,
   carb: "rice",
   time: 30,
-  title: "Korean Gochujang Chicken Thigh Bowl",
-  desc: "Sticky, spicy-sweet gochujang glazed chicken thighs over fluffy rice with a sesame cucumber crunch.",
+  title: "Korean Gochujang Chicken Bowl",
+  desc: "Sticky, spicy-sweet gochujang glazed chicken over fluffy rice with a sesame cucumber crunch.",
   tags: ["korean"],
   flavor: "savory",
   sauce_kcal: 110,
@@ -483,8 +384,8 @@ const R = [
   displayNum: 3,
   carb: "rice",
   time: 25,
-  title: "Thai Basil Chicken Thigh Rice",
-  desc: "Pad kra pao-style minced chicken thighs with fresh Thai basil, fish sauce, and a runny fried egg on top.",
+  title: "Thai Basil Chicken Rice",
+  desc: "Pad kra pao-style minced chicken with fresh Thai basil, fish sauce, and a runny fried egg on top.",
   tags: ["thai"],
   flavor: "savory",
   sauce_kcal: 90,
@@ -497,8 +398,8 @@ const R = [
   displayNum: 4,
   carb: "bread",
   time: 35,
-  title: "Shawarma Chicken Thigh Wrap",
-  desc: "Boldly spiced chicken thighs stuffed into a toasted flatbread with garlic yogurt sauce and pickled red onion.",
+  title: "Shawarma Chicken Wrap",
+  desc: "Boldly spiced chicken stuffed into a toasted flatbread with garlic yogurt sauce and pickled red onion.",
   tags: ["middle-eastern"],
   flavor: "savory",
   sauce_kcal: 120,
@@ -511,8 +412,8 @@ const R = [
   displayNum: 5,
   carb: "rice",
   time: 25,
-  title: "Japanese Teriyaki Chicken Thigh",
-  desc: "Glossy homemade teriyaki sauce over pan-seared chicken thighs — cleaner than takeout, tastes just as good.",
+  title: "Japanese Teriyaki Chicken",
+  desc: "Glossy homemade teriyaki sauce over pan-seared chicken — cleaner than takeout, tastes just as good.",
   tags: ["japanese"],
   flavor: "savory",
   sauce_kcal: 100,
@@ -525,7 +426,7 @@ const R = [
   displayNum: 6,
   carb: "rice",
   time: 30,
-  title: "Chipotle Lime Chicken Thigh Bowl",
+  title: "Chipotle Lime Chicken Bowl",
   desc: "Smoky chipotle-marinated thighs over cilantro lime rice with black bean salsa and Greek yogurt crema.",
   tags: ["mexican"],
   flavor: "savory",
@@ -539,8 +440,8 @@ const R = [
   displayNum: 7,
   carb: "noodle",
   time: 25,
-  title: "Honey Garlic Chicken Thigh Noodles",
-  desc: "Caramelised honey garlic chicken thighs tossed with udon noodles and a punchy soy-sesame sauce.",
+  title: "Honey Garlic Chicken Noodles",
+  desc: "Caramelised honey garlic chicken tossed with udon noodles and a punchy soy-sesame sauce.",
   tags: ["asian"],
   flavor: "savory",
   sauce_kcal: 130,
@@ -553,8 +454,8 @@ const R = [
   displayNum: 8,
   carb: "potato",
   time: 45,
-  title: "Mediterranean Lemon Herb Chicken Thighs & Potatoes",
-  desc: "One-pan chicken thighs roasted over crispy lemon-herb potatoes with cherry tomatoes and fresh herbs.",
+  title: "Mediterranean Lemon Herb Chicken & Potatoes",
+  desc: "One-pan chicken roasted over crispy lemon-herb potatoes with cherry tomatoes and fresh herbs.",
   tags: ["mediterranean"],
   flavor: "savory",
   sauce_kcal: 95,
@@ -567,8 +468,8 @@ const R = [
   displayNum: 9,
   carb: "rice",
   time: 35,
-  title: "Indian Tikka Masala Chicken Thighs",
-  desc: "Rich, creamy tikka masala made with marinated chicken thighs and a lightened-up tomato-yogurt sauce.",
+  title: "Indian Tikka Masala Chicken",
+  desc: "Rich, creamy tikka masala made with marinated chicken and a lightened-up tomato-yogurt sauce.",
   tags: ["indian"],
   flavor: "savory",
   sauce_kcal: 140,
@@ -581,8 +482,8 @@ const R = [
   displayNum: 10,
   carb: "rice",
   time: 30,
-  title: "Chinese Five-Spice Crispy Chicken Thighs",
-  desc: "Crispy-skinned chicken thighs glazed with five-spice and hoisin, served over jasmine rice with steamed bok choy.",
+  title: "Chinese Five-Spice Crispy Chicken",
+  desc: "Crispy-skinned chicken glazed with five-spice and hoisin, served over jasmine rice with steamed bok choy.",
   tags: ["chinese"],
   flavor: "savory",
   sauce_kcal: 105,
@@ -595,8 +496,8 @@ const R = [
   displayNum: 11,
   carb: "potato",
   time: 40,
-  title: "Smoky BBQ Chicken Thighs & Smashed Potatoes",
-  desc: "Juicy BBQ-glazed chicken thighs with crispy smashed potatoes and a tangy Greek yogurt dip.",
+  title: "Smoky BBQ Chicken & Smashed Potatoes",
+  desc: "Juicy BBQ-glazed chicken with crispy smashed potatoes and a tangy Greek yogurt dip.",
   tags: ["american", "comfort"],
   flavor: "savory",
   sauce_kcal: 125,
@@ -753,8 +654,8 @@ const R = [
   displayNum: 22,
   carb: "noodle",
   time: 30,
-  title: "Korean Dakgalbi Chicken Breast Noodles",
-  desc: "Spicy stir-fried chicken breast in gochujang dakgalbi sauce with chewy glass noodles and cabbage.",
+  title: "Korean Dakgalbi Chicken Noodles",
+  desc: "Spicy stir-fried chicken in gochujang dakgalbi sauce with chewy glass noodles and cabbage.",
   tags: ["korean"],
   flavor: "savory",
   sauce_kcal: 110,
@@ -768,7 +669,7 @@ const R = [
   carb: "bread",
   time: 20,
   title: "Crispy Chicken Caesar Wrap",
-  desc: "Pan-seared chicken breast with a high-protein Greek yogurt Caesar dressing, romaine, and parmesan in a toasted wrap.",
+  desc: "Pan-seared chicken with a high-protein Greek yogurt Caesar dressing, romaine, and parmesan in a toasted wrap.",
   tags: ["american", "mediterranean"],
   flavor: "savory",
   sauce_kcal: 130,
@@ -781,8 +682,8 @@ const R = [
   displayNum: 24,
   carb: "rice",
   time: 25,
-  title: "Thai Peanut Chicken Breast Bowl",
-  desc: "Sliced chicken breast over jasmine rice with a creamy spicy peanut sauce and quick-pickled cucumber.",
+  title: "Thai Peanut Chicken Bowl",
+  desc: "Sliced chicken over jasmine rice with a creamy spicy peanut sauce and quick-pickled cucumber.",
   tags: ["thai"],
   flavor: "savory",
   sauce_kcal: 145,
@@ -795,8 +696,8 @@ const R = [
   displayNum: 25,
   carb: "potato",
   time: 35,
-  title: "Lemon Herb Chicken Breast & Roasted Potatoes",
-  desc: "Juicy brined chicken breast with crispy rosemary potatoes and a light lemon-mustard pan sauce.",
+  title: "Lemon Herb Chicken & Roasted Potatoes",
+  desc: "Juicy brined chicken with crispy rosemary potatoes and a light lemon-mustard pan sauce.",
   tags: ["mediterranean"],
   flavor: "savory",
   sauce_kcal: 90,
@@ -809,8 +710,8 @@ const R = [
   displayNum: 26,
   carb: "rice",
   time: 25,
-  title: "Kung Pao Chicken Breast",
-  desc: "Classic kung pao with chicken breast, toasted peanuts, and dried chili — sweet, sour, spicy, and crunchy.",
+  title: "Kung Pao Chicken",
+  desc: "Classic kung pao with chicken, toasted peanuts, and dried chili — sweet, sour, spicy, and crunchy.",
   tags: ["chinese"],
   flavor: "savory",
   sauce_kcal: 120,
@@ -824,7 +725,7 @@ const R = [
   carb: "bread",
   time: 35,
   title: "Chicken Tikka Naan Wrap",
-  desc: "Tandoori-spiced chicken breast chunks charred and wrapped in warm naan with a fresh mint chutney.",
+  desc: "Tandoori-spiced chicken chunks charred and wrapped in warm naan with a fresh mint chutney.",
   tags: ["indian"],
   flavor: "savory",
   sauce_kcal: 125,
@@ -838,7 +739,7 @@ const R = [
   carb: "rice",
   time: 30,
   title: "Baked Chicken Katsu Rice",
-  desc: "Crispy oven-baked panko chicken breast with a rich homemade tonkatsu sauce over steamed rice.",
+  desc: "Crispy oven-baked panko chicken with a rich homemade tonkatsu sauce over steamed rice.",
   tags: ["japanese"],
   flavor: "savory",
   sauce_kcal: 115,
@@ -852,7 +753,7 @@ const R = [
   carb: "rice",
   time: 25,
   title: "Mexican Chicken Burrito Bowl",
-  desc: "Cumin-spiced chicken breast over cilantro lime rice with corn, black beans, and a Greek yogurt crema.",
+  desc: "Cumin-spiced chicken over cilantro lime rice with corn, black beans, and a Greek yogurt crema.",
   tags: ["mexican"],
   flavor: "savory",
   sauce_kcal: 105,
@@ -865,8 +766,8 @@ const R = [
   displayNum: 30,
   carb: "noodle",
   time: 20,
-  title: "Lo Mein Chicken Breast Stir Fry",
-  desc: "Quick wok-tossed egg noodles with chicken breast, vegetables, and a savory oyster-soy sauce.",
+  title: "Lo Mein Chicken Stir Fry",
+  desc: "Quick wok-tossed egg noodles with chicken, vegetables, and a savory oyster-soy sauce.",
   tags: ["chinese", "asian"],
   flavor: "savory",
   sauce_kcal: 100,
@@ -880,7 +781,7 @@ const R = [
   carb: "potato",
   time: 40,
   title: "Chicken Shawarma Bowl with Roasted Potatoes",
-  desc: "Shawarma-spiced chicken breast over roasted potato wedges with tahini sauce and a fresh tomato-herb salad.",
+  desc: "Shawarma-spiced chicken over roasted potato wedges with tahini sauce and a fresh tomato-herb salad.",
   tags: ["middle-eastern"],
   flavor: "savory",
   sauce_kcal: 115,
