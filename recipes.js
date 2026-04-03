@@ -352,8 +352,22 @@ MASTER CARD EXAMPLES:
 
 const R = [
 {
-  id: "korean-gochujang-chicken-thigh-bowl",
+  id: "korean-glazed-chicken-bowl",
   displayNum: 1,
+  carb: "rice",
+  time: 30,
+  title: "Korean Glazed Chicken Bowl",
+  desc: "Boneless thighs with quick-pickled cucumber, spring onions and Korean glaze over jasmine rice.",
+  tags: ["korean"],
+  flavor: "savory",
+  sauce_kcal: 95,
+  sauce_p: 2,
+  sauce_c: 12,
+  sauce_f: 3,
+},
+{
+  id: "korean-gochujang-chicken-thigh-bowl",
+  displayNum: 2,
   carb: "rice",
   time: 30,
   title: "Korean Gochujang Chicken Thigh Bowl",
@@ -367,7 +381,7 @@ const R = [
 },
 {
   id: "thai-basil-chicken-thigh-rice",
-  displayNum: 2,
+  displayNum: 3,
   carb: "rice",
   time: 25,
   title: "Thai Basil Chicken Thigh Rice",
@@ -381,7 +395,7 @@ const R = [
 },
 {
   id: "shawarma-chicken-thigh-wrap",
-  displayNum: 3,
+  displayNum: 4,
   carb: "bread",
   time: 35,
   title: "Shawarma Chicken Thigh Wrap",
@@ -395,7 +409,7 @@ const R = [
 },
 {
   id: "japanese-teriyaki-chicken-thigh",
-  displayNum: 4,
+  displayNum: 5,
   carb: "rice",
   time: 25,
   title: "Japanese Teriyaki Chicken Thigh",
@@ -409,7 +423,7 @@ const R = [
 },
 {
   id: "chipotle-lime-chicken-thigh-bowl",
-  displayNum: 5,
+  displayNum: 6,
   carb: "rice",
   time: 30,
   title: "Chipotle Lime Chicken Thigh Bowl",
@@ -423,7 +437,7 @@ const R = [
 },
 {
   id: "honey-garlic-chicken-thigh-noodles",
-  displayNum: 6,
+  displayNum: 7,
   carb: "noodle",
   time: 25,
   title: "Honey Garlic Chicken Thigh Noodles",
@@ -437,7 +451,7 @@ const R = [
 },
 {
   id: "mediterranean-chicken-thigh-potato",
-  displayNum: 7,
+  displayNum: 8,
   carb: "potato",
   time: 45,
   title: "Mediterranean Lemon Herb Chicken Thighs & Potatoes",
@@ -451,7 +465,7 @@ const R = [
 },
 {
   id: "indian-tikka-chicken-thigh-rice",
-  displayNum: 8,
+  displayNum: 9,
   carb: "rice",
   time: 35,
   title: "Indian Tikka Masala Chicken Thighs",
@@ -465,7 +479,7 @@ const R = [
 },
 {
   id: "chinese-five-spice-chicken-thigh-rice",
-  displayNum: 9,
+  displayNum: 10,
   carb: "rice",
   time: 30,
   title: "Chinese Five-Spice Crispy Chicken Thighs",
@@ -479,7 +493,7 @@ const R = [
 },
 {
   id: "bbq-chicken-thigh-smashed-potato",
-  displayNum: 10,
+  displayNum: 11,
   carb: "potato",
   time: 40,
   title: "Smoky BBQ Chicken Thighs & Smashed Potatoes",
@@ -495,7 +509,7 @@ const R = [
 
 {
   id: "korean-bulgogi-beef-rice-bowl",
-  displayNum: 11,
+  displayNum: 12,
   carb: "rice",
   time: 25,
   title: "Korean Bulgogi Beef Rice Bowl",
@@ -509,7 +523,7 @@ const R = [
 },
 {
   id: "smash-burger-brioche",
-  displayNum: 12,
+  displayNum: 13,
   carb: "bread",
   time: 20,
   title: "Smash Burger with Special Sauce",
@@ -523,7 +537,7 @@ const R = [
 },
 {
   id: "mexican-taco-beef-bowl",
-  displayNum: 13,
+  displayNum: 14,
   carb: "rice",
   time: 25,
   title: "Mexican Taco Beef Rice Bowl",
@@ -537,7 +551,7 @@ const R = [
 },
 {
   id: "chinese-mapo-tofu-beef-rice",
-  displayNum: 14,
+  displayNum: 15,
   carb: "rice",
   time: 30,
   title: "Spicy Mapo Tofu Beef Rice",
@@ -551,7 +565,7 @@ const R = [
 },
 {
   id: "thai-larb-beef-rice",
-  displayNum: 15,
+  displayNum: 16,
   carb: "rice",
   time: 20,
   title: "Thai Larb Beef Bowl",
@@ -565,7 +579,7 @@ const R = [
 },
 {
   id: "middle-eastern-kofta-potato",
-  displayNum: 16,
+  displayNum: 17,
   carb: "potato",
   time: 35,
   title: "Middle Eastern Kofta & Roasted Potatoes",
@@ -579,7 +593,7 @@ const R = [
 },
 {
   id: "japanese-beef-rice-bowl-gyudon",
-  displayNum: 17,
+  displayNum: 18,
   carb: "rice",
   time: 20,
   title: "Japanese Gyudon Beef Rice Bowl",
@@ -593,7 +607,7 @@ const R = [
 },
 {
   id: "beef-bolognese-protein-pasta",
-  displayNum: 18,
+  displayNum: 19,
   carb: "noodle",
   time: 40,
   title: "High-Protein Beef Bolognese",
@@ -607,7 +621,7 @@ const R = [
 },
 {
   id: "beef-bibimbap-bowl",
-  displayNum: 19,
+  displayNum: 20,
   carb: "rice",
   time: 30,
   title: "Beef Bibimbap Bowl",
@@ -621,7 +635,7 @@ const R = [
 },
 {
   id: "beef-stuffed-potato-skins",
-  displayNum: 20,
+  displayNum: 21,
   carb: "potato",
   time: 45,
   title: "Loaded Beef & Cheese Stuffed Potato Skins",
@@ -637,7 +651,7 @@ const R = [
 
 {
   id: "korean-dakgalbi-chicken-breast-noodle",
-  displayNum: 21,
+  displayNum: 22,
   carb: "noodle",
   time: 30,
   title: "Korean Dakgalbi Chicken Breast Noodles",
@@ -651,7 +665,7 @@ const R = [
 },
 {
   id: "chicken-caesar-wrap",
-  displayNum: 22,
+  displayNum: 23,
   carb: "bread",
   time: 20,
   title: "Crispy Chicken Caesar Wrap",
@@ -665,7 +679,7 @@ const R = [
 },
 {
   id: "thai-peanut-chicken-breast-rice",
-  displayNum: 23,
+  displayNum: 24,
   carb: "rice",
   time: 25,
   title: "Thai Peanut Chicken Breast Bowl",
@@ -679,7 +693,7 @@ const R = [
 },
 {
   id: "lemon-herb-chicken-breast-potato",
-  displayNum: 24,
+  displayNum: 25,
   carb: "potato",
   time: 35,
   title: "Lemon Herb Chicken Breast & Roasted Potatoes",
@@ -693,7 +707,7 @@ const R = [
 },
 {
   id: "chinese-kung-pao-chicken-breast-rice",
-  displayNum: 25,
+  displayNum: 26,
   carb: "rice",
   time: 25,
   title: "Kung Pao Chicken Breast",
@@ -707,7 +721,7 @@ const R = [
 },
 {
   id: "chicken-breast-tikka-naan",
-  displayNum: 26,
+  displayNum: 27,
   carb: "bread",
   time: 35,
   title: "Chicken Tikka Naan Wrap",
@@ -721,7 +735,7 @@ const R = [
 },
 {
   id: "japanese-chicken-breast-katsu-rice",
-  displayNum: 27,
+  displayNum: 28,
   carb: "rice",
   time: 30,
   title: "Baked Chicken Katsu Rice",
@@ -735,7 +749,7 @@ const R = [
 },
 {
   id: "mexican-chicken-burrito-bowl",
-  displayNum: 28,
+  displayNum: 29,
   carb: "rice",
   time: 25,
   title: "Mexican Chicken Burrito Bowl",
@@ -749,7 +763,7 @@ const R = [
 },
 {
   id: "chicken-breast-stir-fry-noodles",
-  displayNum: 29,
+  displayNum: 30,
   carb: "noodle",
   time: 20,
   title: "Lo Mein Chicken Breast Stir Fry",
@@ -763,7 +777,7 @@ const R = [
 },
 {
   id: "chicken-breast-shawarma-potato",
-  displayNum: 30,
+  displayNum: 31,
   carb: "potato",
   time: 40,
   title: "Chicken Shawarma Bowl with Roasted Potatoes",
@@ -779,7 +793,7 @@ const R = [
 
 {
   id: "korean-egg-fried-rice",
-  displayNum: 31,
+  displayNum: 32,
   carb: "rice",
   time: 15,
   title: "Korean Egg Fried Rice",
@@ -793,7 +807,7 @@ const R = [
 },
 {
   id: "shakshuka-middle-eastern-eggs",
-  displayNum: 32,
+  displayNum: 33,
   carb: "bread",
   time: 25,
   title: "Shakshuka with Feta",
@@ -807,7 +821,7 @@ const R = [
 },
 {
   id: "japanese-tamago-gohan-bowl",
-  displayNum: 33,
+  displayNum: 34,
   carb: "rice",
   time: 10,
   title: "Japanese TKG — Tamago Kake Gohan",
@@ -821,7 +835,7 @@ const R = [
 },
 {
   id: "mexican-huevos-rancheros",
-  displayNum: 34,
+  displayNum: 35,
   carb: "bread",
   time: 20,
   title: "Huevos Rancheros",
@@ -835,7 +849,7 @@ const R = [
 },
 {
   id: "chinese-tomato-egg-stir-fry-rice",
-  displayNum: 35,
+  displayNum: 36,
   carb: "rice",
   time: 15,
   title: "Chinese Tomato & Egg Stir Fry",
@@ -849,7 +863,7 @@ const R = [
 },
 {
   id: "high-protein-egg-potato-hash",
-  displayNum: 36,
+  displayNum: 37,
   carb: "potato",
   time: 25,
   title: "High-Protein Egg & Potato Hash",
@@ -863,7 +877,7 @@ const R = [
 },
 {
   id: "thai-omelette-rice-kai-jeow",
-  displayNum: 37,
+  displayNum: 38,
   carb: "rice",
   time: 15,
   title: "Thai Crispy Omelette Rice (Kai Jeow)",
@@ -877,7 +891,7 @@ const R = [
 },
 {
   id: "mediterranean-egg-white-omelette-wrap",
-  displayNum: 38,
+  displayNum: 39,
   carb: "bread",
   time: 15,
   title: "Mediterranean Egg White Omelette Wrap",
@@ -891,7 +905,7 @@ const R = [
 },
 {
   id: "french-scrambled-eggs-toast",
-  displayNum: 39,
+  displayNum: 40,
   carb: "bread",
   time: 15,
   title: "French Soft Scrambled Eggs on Toast",
@@ -905,7 +919,7 @@ const R = [
 },
 {
   id: "egg-fried-noodles-asian",
-  displayNum: 40,
+  displayNum: 41,
   carb: "noodle",
   time: 20,
   title: "Wok Egg Fried Noodles",
@@ -921,6 +935,68 @@ const R = [
 
 // --- RECIPE DETAILS (ingredients, steps, hacks) ---
 const RECIPE_DETAILS = {
+  "korean-glazed-chicken-bowl": {
+    image: "https://pub-bc6707297a024aa19ff31c3e4a36c1a9.r2.dev/Recipes/default_1.65.1.jpg",
+    video: "I5BZybb9bpM",
+    ingredients: [
+      {
+        section: "Rice",
+        items: [
+          { name: "Jasmine rice (dry)", amt: "{{carbG}}g" },
+          { name: "Chicken broth (low-sodium)", amt: "320ml" },
+        ],
+      },
+      {
+        section: "Chicken",
+        items: [
+          { name: "Boneless skinless chicken thighs", amt: "{{proteinG}}g raw" },
+          { name: "Cooking spray / neutral oil", amt: "1 tsp" },
+          { name: "Garlic powder", amt: "½ tsp" },
+          { name: "Black pepper", amt: "pinch" },
+        ],
+      },
+      {
+        section: "Gochujang Glaze",
+        items: [
+          { name: "Gochujang paste", amt: "1.5 tbsp" },
+          { name: "Soy sauce (low-sodium)", amt: "3 tbsp" },
+          { name: "Rice vinegar", amt: "1.5 tbsp" },
+          { name: "Honey", amt: "1 tsp" },
+          { name: "Garlic cloves (minced)", amt: "5 cloves" },
+        ],
+      },
+      {
+        section: "Quick Pickle",
+        items: [
+          { name: "Cucumber", amt: "1 whole" },
+          { name: "Rice vinegar", amt: "splash" },
+          { name: "Salt", amt: "pinch" },
+          { name: "Gochugaru or chili flakes", amt: "½ tsp" },
+        ],
+      },
+      {
+        section: "Topping",
+        items: [
+          { name: "Spring onions (sliced)", amt: "3 stalks" },
+          { name: "Sesame seeds", amt: "1 tsp" },
+        ],
+      },
+    ],
+    steps: [
+      "Cook the broth rice: Rinse jasmine rice until water runs clear. Combine with chicken broth in a pot. Bring to a boil, reduce to lowest heat, cover and cook 12 minutes. Off heat, steam covered for 5 more minutes. Don't lift the lid.",
+      "Make the glaze: Finely mince garlic. Mix with gochujang paste, soy sauce, rice vinegar and honey in a small bowl. Taste — punchy, tangy, slightly sweet. Set aside.",
+      "Sear the thighs: Pat chicken dry with paper towels — the drier the surface, the better the crust. Season with garlic powder and black pepper. Heat a non-stick or cast iron pan over high until just smoking. Place thighs flat — don't move them. Sear 4–5 minutes until deeply golden and releasing naturally, then flip. Another 3–4 minutes. Internal temp 75°C.",
+      "Glaze and caramelize: Reduce heat to medium. Pour glaze over the thighs and toss to coat. Let caramelize 60–90 seconds, turning once — sticky, lacquered surface with slightly charred edges. Pull off heat immediately.",
+      "Rest and slice: Let thighs rest 2 minutes on a board, then slice against the grain into thick strips.",
+      "Quick-pickle the cucumber: Thinly slice cucumber into half-moons. Toss with salt, a splash of rice vinegar and gochugaru. Let sit at least 5 minutes.",
+      "Build the bowl: Spoon broth rice into bowls. Lay sliced glazed thighs over the rice. Add pickled cucumber alongside. Finish with spring onion and drizzle any remaining caramelized glaze over everything. Serve immediately.",
+    ],
+    hacks: [
+      { title: "Rice hack", text: "Broth instead of water = free savory depth, zero extra calories. Takes the same time, tastes completely different." },
+      { title: "Pickle hack", text: "The pickle adds acid that cuts through the richness of the thigh meat — it's the balance the bowl needs. Even 5 minutes of pickling makes a difference." },
+    ],
+    notes: "Spice level: 1.5 tbsp gochujang = medium — adjust to taste. Meal prep: sauce lasts 5 days refrigerated, chicken and rice store well for 3 days.",
+  },
 "korean-gochujang-chicken-thigh-bowl": {
   image: null,
   video: null,
