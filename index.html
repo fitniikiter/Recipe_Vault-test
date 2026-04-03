@@ -6646,11 +6646,10 @@
           s = document.getElementById("modalTagsRow"),
           o = (a.tags || []).map((e) => `<span class="tag tag-${e}">${e}</span>`).join("");
         ((s.innerHTML = `\n    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:${o ? "6px" : "0"};">\n      <span class="carb-badge ${a.carb}" style="font-size:10px;padding:4px 10px;">${{ potato: "🥔 Potato", rice: "🍚 Rice", noodle: "🍜 Noodle", bread: "🫓 Bread" }[a.carb]}</span>\n      <span class="protein-badge ${n}" style="font-size:10px;padding:4px 10px;">${i}</span>\n      <span class="flavor-badge ${a.flavor || "savory"}" style="font-size:10px;padding:4px 10px;">${"sweet" === a.flavor ? "🍯 Sweet" : "🧂 Savory"}</span>\n      ${ALCOHOL_RECIPE_IDS.has(a.id) ? '<span class="flavor-badge alcohol" style="font-size:10px;padding:4px 10px;">🍶 Alcohol</span>' : ""}\n    </div>\n    ${o ? `<div style="display:flex;flex-wrap:wrap;gap:5px;">${o}</div>` : ""}\n  `),
-          updateModalMacros(a));
+          (modalServings = weights.servings), updateModalMacros(a));
         const r = getRecipeDetail(a),
           c = document.getElementById("modalTabs");
         ((c.innerHTML = `\n    <div class="modal-tab active" onclick="switchModalTab('ingredients',this)">🥄 Ingredients</div>\n    <div class="modal-tab" onclick="switchModalTab('recipe',this)">👨‍🍳 Recipe</div>\n    ${r.video ? '<div class="modal-tab" onclick="switchModalTab(\'video\',this)">▶️ Video</div>' : ""}\n  `),
-          (modalServings = weights.servings),
           buildIngredientsTab(a, modalServings),
           buildRecipeTab(a),
           r.video && buildVideoTab(a),
