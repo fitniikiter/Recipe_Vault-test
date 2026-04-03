@@ -353,6 +353,7 @@ MASTER CARD EXAMPLES:
 const R = [
 {
   id: "korean-glazed-chicken-bowl",
+  protein: "chicken",
   displayNum: 1,
   carb: "rice",
   time: 30,
@@ -367,6 +368,7 @@ const R = [
 },
 {
   id: "korean-gochujang-chicken-bowl",
+  protein: "chicken",
   displayNum: 2,
   carb: "rice",
   time: 30,
@@ -381,6 +383,7 @@ const R = [
 },
 {
   id: "thai-basil-chicken-rice",
+  protein: "chicken",
   displayNum: 3,
   carb: "rice",
   time: 25,
@@ -395,6 +398,7 @@ const R = [
 },
 {
   id: "shawarma-chicken-wrap",
+  protein: "chicken",
   displayNum: 4,
   carb: "bread",
   time: 35,
@@ -409,6 +413,7 @@ const R = [
 },
 {
   id: "japanese-teriyaki-chicken",
+  protein: "chicken",
   displayNum: 5,
   carb: "rice",
   time: 25,
@@ -423,6 +428,7 @@ const R = [
 },
 {
   id: "chipotle-lime-chicken-bowl",
+  protein: "chicken",
   displayNum: 6,
   carb: "rice",
   time: 30,
@@ -437,6 +443,7 @@ const R = [
 },
 {
   id: "honey-garlic-chicken-noodles",
+  protein: "chicken",
   displayNum: 7,
   carb: "noodle",
   time: 25,
@@ -451,6 +458,7 @@ const R = [
 },
 {
   id: "mediterranean-chicken-potato",
+  protein: "chicken",
   displayNum: 8,
   carb: "potato",
   time: 45,
@@ -465,6 +473,7 @@ const R = [
 },
 {
   id: "indian-tikka-chicken-rice",
+  protein: "chicken",
   displayNum: 9,
   carb: "rice",
   time: 35,
@@ -479,6 +488,7 @@ const R = [
 },
 {
   id: "chinese-five-spice-chicken-rice",
+  protein: "chicken",
   displayNum: 10,
   carb: "rice",
   time: 30,
@@ -493,6 +503,7 @@ const R = [
 },
 {
   id: "bbq-chicken-smashed-potato",
+  protein: "chicken",
   displayNum: 11,
   carb: "potato",
   time: 40,
@@ -509,6 +520,7 @@ const R = [
 
 {
   id: "korean-bulgogi-beef-rice-bowl",
+  protein: "beef",
   displayNum: 12,
   carb: "rice",
   time: 25,
@@ -523,6 +535,7 @@ const R = [
 },
 {
   id: "smash-burger-brioche",
+  protein: "beef",
   displayNum: 13,
   carb: "bread",
   time: 20,
@@ -537,6 +550,7 @@ const R = [
 },
 {
   id: "mexican-taco-beef-bowl",
+  protein: "beef",
   displayNum: 14,
   carb: "rice",
   time: 25,
@@ -551,6 +565,7 @@ const R = [
 },
 {
   id: "chinese-mapo-tofu-beef-rice",
+  protein: "beef",
   displayNum: 15,
   carb: "rice",
   time: 30,
@@ -565,6 +580,7 @@ const R = [
 },
 {
   id: "thai-larb-beef-rice",
+  protein: "beef",
   displayNum: 16,
   carb: "rice",
   time: 20,
@@ -579,6 +595,7 @@ const R = [
 },
 {
   id: "middle-eastern-kofta-potato",
+  protein: "beef",
   displayNum: 17,
   carb: "potato",
   time: 35,
@@ -593,6 +610,7 @@ const R = [
 },
 {
   id: "japanese-beef-rice-bowl-gyudon",
+  protein: "beef",
   displayNum: 18,
   carb: "rice",
   time: 20,
@@ -607,6 +625,7 @@ const R = [
 },
 {
   id: "beef-bolognese-protein-pasta",
+  protein: "beef",
   displayNum: 19,
   carb: "noodle",
   time: 40,
@@ -621,6 +640,7 @@ const R = [
 },
 {
   id: "beef-bibimbap-bowl",
+  protein: "beef",
   displayNum: 20,
   carb: "rice",
   time: 30,
@@ -635,6 +655,7 @@ const R = [
 },
 {
   id: "beef-stuffed-potato-skins",
+  protein: "beef",
   displayNum: 21,
   carb: "potato",
   time: 45,
@@ -651,6 +672,7 @@ const R = [
 
 {
   id: "korean-dakgalbi-chicken-noodle",
+  protein: "chicken",
   displayNum: 22,
   carb: "noodle",
   time: 30,
@@ -665,6 +687,7 @@ const R = [
 },
 {
   id: "chicken-caesar-wrap",
+  protein: "chicken",
   displayNum: 23,
   carb: "bread",
   time: 20,
@@ -679,6 +702,7 @@ const R = [
 },
 {
   id: "thai-peanut-chicken-rice",
+  protein: "chicken",
   displayNum: 24,
   carb: "rice",
   time: 25,
@@ -693,6 +717,7 @@ const R = [
 },
 {
   id: "lemon-herb-chicken-potato",
+  protein: "chicken",
   displayNum: 25,
   carb: "potato",
   time: 35,
@@ -707,6 +732,7 @@ const R = [
 },
 {
   id: "chinese-kung-pao-chicken-rice",
+  protein: "chicken",
   displayNum: 26,
   carb: "rice",
   time: 25,
@@ -721,6 +747,7 @@ const R = [
 },
 {
   id: "chicken-tikka-naan",
+  protein: "chicken",
   displayNum: 27,
   carb: "bread",
   time: 35,
@@ -735,6 +762,7 @@ const R = [
 },
 {
   id: "japanese-chicken-katsu-rice",
+  protein: "chicken",
   displayNum: 28,
   carb: "rice",
   time: 30,
@@ -749,6 +777,7 @@ const R = [
 },
 {
   id: "mexican-chicken-burrito-bowl",
+  protein: "chicken",
   displayNum: 29,
   carb: "rice",
   time: 25,
@@ -763,6 +792,7 @@ const R = [
 },
 {
   id: "chicken-stir-fry-noodles",
+  protein: "chicken",
   displayNum: 30,
   carb: "noodle",
   time: 20,
@@ -777,6 +807,7 @@ const R = [
 },
 {
   id: "chicken-shawarma-potato",
+  protein: "chicken",
   displayNum: 31,
   carb: "potato",
   time: 40,
@@ -793,6 +824,7 @@ const R = [
 
 {
   id: "korean-egg-fried-rice",
+  protein: "eggs",
   displayNum: 32,
   carb: "rice",
   time: 15,
@@ -807,6 +839,7 @@ const R = [
 },
 {
   id: "shakshuka-middle-eastern-eggs",
+  protein: "eggs",
   displayNum: 33,
   carb: "bread",
   time: 25,
@@ -821,6 +854,7 @@ const R = [
 },
 {
   id: "japanese-tamago-gohan-bowl",
+  protein: "eggs",
   displayNum: 34,
   carb: "rice",
   time: 10,
@@ -835,6 +869,7 @@ const R = [
 },
 {
   id: "mexican-huevos-rancheros",
+  protein: "eggs",
   displayNum: 35,
   carb: "bread",
   time: 20,
@@ -849,6 +884,7 @@ const R = [
 },
 {
   id: "chinese-tomato-egg-stir-fry-rice",
+  protein: "eggs",
   displayNum: 36,
   carb: "rice",
   time: 15,
@@ -863,6 +899,7 @@ const R = [
 },
 {
   id: "high-protein-egg-potato-hash",
+  protein: "eggs",
   displayNum: 37,
   carb: "potato",
   time: 25,
@@ -877,6 +914,7 @@ const R = [
 },
 {
   id: "thai-omelette-rice-kai-jeow",
+  protein: "eggs",
   displayNum: 38,
   carb: "rice",
   time: 15,
@@ -891,6 +929,7 @@ const R = [
 },
 {
   id: "mediterranean-egg-white-omelette-wrap",
+  protein: "eggs",
   displayNum: 39,
   carb: "bread",
   time: 15,
@@ -905,6 +944,7 @@ const R = [
 },
 {
   id: "french-scrambled-eggs-toast",
+  protein: "eggs",
   displayNum: 40,
   carb: "bread",
   time: 15,
@@ -919,6 +959,7 @@ const R = [
 },
 {
   id: "egg-fried-noodles-asian",
+  protein: "eggs",
   displayNum: 41,
   carb: "noodle",
   time: 20,
