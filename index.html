@@ -918,6 +918,34 @@
         color: #b478ff;
         border: 1px solid rgba(180, 120, 255, 0.25);
       }
+      .flavor-badge.spicy {
+        background: rgba(255, 80, 40, 0.12);
+        color: #ff5028;
+        border: 1px solid rgba(255, 80, 40, 0.25);
+      }
+      .filter-btn.spicy.active {
+        background: #ff5028;
+        color: #fff;
+        border-color: #ff5028;
+      }
+      .recipe-hint-box {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        background: rgba(255, 200, 60, 0.10);
+        border: 1px solid rgba(255, 200, 60, 0.30);
+        border-radius: 8px;
+        padding: 9px 12px;
+        margin: 0 0 12px 0;
+        font-size: 12px;
+        color: var(--text);
+        line-height: 1.5;
+      }
+      .recipe-hint-box .hint-icon {
+        font-size: 14px;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
       .filter-btn.sweet.active {
         background: #ffb347;
         color: #000;
@@ -969,7 +997,7 @@
       }
       .card-top {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: flex-start;
         margin-bottom: 6px;
       }
@@ -978,6 +1006,18 @@
         font-size: 11px;
         color: var(--muted);
         letter-spacing: 1px;
+      }
+      .card-num-inline {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 1px;
+        opacity: 0.8;
+      }
+      .card-top-sep {
+        margin: 0 5px;
+        color: var(--border);
+        font-size: 10px;
       }
       .card-time {
         font-size: 11px;
@@ -4508,6 +4548,7 @@
             ></span>
             <button class="filter-btn sweet" onclick="setFlavorFilter('sweet', this)">🍯 Sweet</button>
             <button class="filter-btn savory" onclick="setFlavorFilter('savory', this)">🧂 Savory</button>
+            <button class="filter-btn spicy" onclick="setSpicyFilter(this)">🌶️ Spicy</button>
           </div>
         </div>
         <div class="filter-dropdown" id="panel-carbs">
@@ -5102,6 +5143,7 @@
           <div class="modal-title" id="modalTitle"></div>
           <div class="modal-header-collapsible" id="modalCollapsible">
             <div class="modal-desc" id="modalDesc"></div>
+            <div id="modalHintBox" class="recipe-hint-box" style="display:none"><span class="hint-icon">📌</span><span id="modalHintText"></span></div>
             <div class="modal-macro-row">
               <div class="modal-macro mk"><span class="mv" id="mKcal">—</span><span class="ml">kcal</span></div>
               <div class="modal-macro mp"><span class="mv" id="mProt">—</span><span class="ml">protein</span></div>
@@ -5144,8 +5186,8 @@
       </div>
     </footer>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="nutrition.js"></script>
-  <script src="recipes.js"></script>
+    <script src="nutrition.js?v=202604031347"></script>
+  <script src="recipes.js?v=202604031347"></script>
     <script>
       const NUT = {
         chicken_thigh: { kcal: 149, p: 18.6, c: 0, f: 7.92 },
@@ -5426,9 +5468,10 @@
         _savedHidden = loadHiddenIds();
       let HIDDEN_RECIPE_IDS = null !== _savedHidden ? _savedHidden : new Set(DEFAULT_HIDDEN_IDS);
 
-      let currentCuisineFilter = "all",
+      let spicyFilter = false,
+        currentCuisineFilter = "all",
         weights = { chicken: 150, potato: 150, rice: 150, noodle: 150, bread: 150, eggs: 0, servings: 1 };
-      const CARB_RATIOS = { potato: 1.25, rice: 0.5, noodle: 0.38, bread: 0.2 };
+      const CARB_RATIOS = { potato: 1.25, rice: 0.33, noodle: 0.33, bread: 0.2 };
       function clockEmoji(e) {
         return e <= 15
           ? "🕐"
@@ -5973,6 +6016,8 @@
         const i = document.getElementById("pillServingsLabel");
         (i && (i.textContent = "1 Serving"),
           (flavorFilter = "all"),
+          (spicyFilter = false),
+          document.querySelector(".filter-btn.spicy") && document.querySelector(".filter-btn.spicy").classList.remove("active"),
           document
             .querySelectorAll(".filter-btn.sweet, .filter-btn.savory")
             .forEach((e) => e.classList.remove("active")));
@@ -6015,15 +6060,19 @@
           d = t || i || n,
           m = t || i || n,
           h = i || n,
-          p = (e, a) => {
-            const t = document.getElementById(e);
-            if (t && t.checked !== a) {
-              t.checked = a;
-              const i = e.replace("chkP", "").toLowerCase();
-              proteinEnabled[i] = a;
+          p = (e, shouldDisable) => {
+            // Only force-disable when dietary requires it
+            // Never re-enable — respect user's manual protein filter state
+            if (shouldDisable) {
+              const t = document.getElementById(e);
+              if (t && t.checked) {
+                t.checked = false;
+                const i = e.replace("chkP", "").toLowerCase();
+                proteinEnabled[i] = false;
+              }
             }
           };
-        (p("chkPChicken", !s), p("chkPBeef", !o), p("chkPEggs", !r), p("chkPFish", !c));
+        (p("chkPChicken", s), p("chkPBeef", o), p("chkPEggs", r), p("chkPFish", c));
         const u = {
           chicken_thigh: s,
           chicken_breast: s,
@@ -6146,7 +6195,7 @@
             : r &&
               r.video &&
               (c = `<div class="card-thumb-wrap"><img class="card-thumb" src="https://img.youtube.com/vi/${r.video}/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/${r.video}/hqdefault.jpg'" loading="lazy" alt="${e.title}"><div class="play-overlay"><span>▶️</span></div></div>`),
-            (i.innerHTML = `${c}\n      <div class="card-top">\n        <div class="card-num">#${String(e.displayNum).padStart(3, "0")}</div>\n        <div class="card-time"><span class="time-icon">${clockEmoji(e.time)}</span>${e.time} min</div>\n      </div>\n      <div class="card-title">${e.title}</div>\n      <div class="card-desc">${e.desc}</div>\n      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:10px;">\n        <span class="carb-badge ${e.carb}" style="margin-bottom:0;vertical-align:middle;">${a[e.carb]}</span>\n        <span class="protein-badge ${s}" style="margin-bottom:0;vertical-align:middle;">${o}</span>\n        <span class="flavor-badge ${e.flavor || "savory"}" style="margin-bottom:0;">${"sweet" === e.flavor ? "🍯 Sweet" : "🧂 Savory"}</span>\n        ${ALCOHOL_RECIPE_IDS.has(e.id) ? '<span class="flavor-badge alcohol" style="margin-bottom:0;">🍶 Alcohol</span>' : ""}\n      </div>\n      <div class="macro-row">\n        <div class="macro-box kcal-box">    <span class="val" data-macro="kcal">—</span>  <span class="lbl">kcal</span></div>\n        <div class="macro-box protein-box"> <span class="val" data-macro="prot">—</span> <span class="lbl">protein</span></div>\n        <div class="macro-box carbs-box">   <span class="val" data-macro="carbs">—</span><span class="lbl">carbs</span></div>\n        <div class="macro-box fat-box">     <span class="val" data-macro="fat">—</span>  <span class="lbl">fat</span></div>\n      </div>\n      <div style="font-size:9px;color:#555;text-align:right;margin-top:-8px;margin-bottom:6px;" data-macro-context>per portion · <span data-serving-label>1 serving</span></div>\n      <div class="score-row">\n        <span class="score-badge" data-score></span>\n        <div class="score-bar-bg"><div class="score-bar-fill" data-fill></div></div>\n        <span class="score-label" data-scorelabel></span>\n      </div>\n      <div class="card-bottom"><div class="tags">${n}</div></div>\n      <div class="card-click-hint">tap to open recipe →</div>`),
+            (i.innerHTML = `${c}\n      <div class="card-top">\n        <div class="card-time"><span class="card-num-inline">#${String(e.displayNum).padStart(3, "0")}</span><span class="card-top-sep">·</span><span class="time-icon">${clockEmoji(e.time)}</span>${e.time} min</div>\n      </div>\n      <div class="card-title">${e.title}</div>\n      <div class="card-desc">${e.desc}</div>\n      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:10px;">\n        <span class="carb-badge ${e.carb}" style="margin-bottom:0;vertical-align:middle;">${a[e.carb]}</span>\n        <span class="protein-badge ${s}" style="margin-bottom:0;vertical-align:middle;">${o}</span>\n        <span class="flavor-badge ${e.flavor || "savory"}" style="margin-bottom:0;">${"sweet" === e.flavor ? "🍯 Sweet" : "🧂 Savory"}</span>\n        ${ALCOHOL_RECIPE_IDS.has(e.id) ? '<span class="flavor-badge alcohol" style="margin-bottom:0;">🍶 Alcohol</span>' : ""}\n        ${SPICY_RECIPE_IDS.has(e.id) ? '<span class="flavor-badge spicy" style="margin-bottom:0;">🌶\ufe0f Spicy</span>' : ""}\n      </div>\n      <div class="macro-row">\n        <div class="macro-box kcal-box">    <span class="val" data-macro="kcal">—</span>  <span class="lbl">kcal</span></div>\n        <div class="macro-box protein-box"> <span class="val" data-macro="prot">—</span> <span class="lbl">protein</span></div>\n        <div class="macro-box carbs-box">   <span class="val" data-macro="carbs">—</span><span class="lbl">carbs</span></div>\n        <div class="macro-box fat-box">     <span class="val" data-macro="fat">—</span>  <span class="lbl">fat</span></div>\n      </div>\n      <div style="font-size:9px;color:#555;text-align:right;margin-top:-8px;margin-bottom:6px;" data-macro-context>per portion · <span data-serving-label>1 serving</span></div>\n      <div class="score-row">\n        <span class="score-badge" data-score></span>\n        <div class="score-bar-bg"><div class="score-bar-fill" data-fill></div></div>\n        <span class="score-label" data-scorelabel></span>\n      </div>\n      <div class="card-bottom"><div class="tags">${n}</div></div>\n      <div class="card-click-hint">tap to open recipe →</div>`),
             t.appendChild(i));
         }),
           e.appendChild(t));
@@ -6249,7 +6298,8 @@
               t.time <= macroFilter.timeMax,
             g = Object.entries(INGREDIENT_RECIPE_MAP).some(([e, a]) => disabledIngredients.has(e) && a.includes(t.id)),
             k = "all" === flavorFilter || (t.flavor || "savory") === flavorFilter,
-            y = s && o && u && !g && k;
+            j = !spicyFilter || SPICY_RECIPE_IDS.has(t.id),
+            y = s && o && u && !g && k && j;
           ((i.style.display = y ? "" : "none"), y && a++);
         }),
           (document.getElementById("visibleCount").textContent = a));
@@ -6636,6 +6686,7 @@
         ((currentModalRecipe = a),
           (document.getElementById("modalTitle").textContent = a.title),
           (document.getElementById("modalDesc").textContent = a.desc),
+          (function(){ const hb=document.getElementById("modalHintBox"),ht=document.getElementById("modalHintText"); if(a.hint){ht.textContent=a.hint;hb.style.display="flex";}else{hb.style.display="none";ht.textContent="";} })(),
           (document.getElementById("modalTime").innerHTML =
             `<span class="time-icon">${clockEmoji(a.time)}</span>${a.time} min`));
         const t = a.protein || "chicken",
@@ -6645,7 +6696,7 @@
           n = { chicken: "chicken", beef: "beef", eggs: "eggs", salmon: "salmon", tofu: "tofu" }[t] || "chicken",
           s = document.getElementById("modalTagsRow"),
           o = (a.tags || []).map((e) => `<span class="tag tag-${e}">${e}</span>`).join("");
-        ((s.innerHTML = `\n    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:${o ? "6px" : "0"};">\n      <span class="carb-badge ${a.carb}" style="font-size:10px;padding:4px 10px;">${{ potato: "🥔 Potato", rice: "🍚 Rice", noodle: "🍜 Noodle", bread: "🫓 Bread" }[a.carb]}</span>\n      <span class="protein-badge ${n}" style="font-size:10px;padding:4px 10px;">${i}</span>\n      <span class="flavor-badge ${a.flavor || "savory"}" style="font-size:10px;padding:4px 10px;">${"sweet" === a.flavor ? "🍯 Sweet" : "🧂 Savory"}</span>\n      ${ALCOHOL_RECIPE_IDS.has(a.id) ? '<span class="flavor-badge alcohol" style="font-size:10px;padding:4px 10px;">🍶 Alcohol</span>' : ""}\n    </div>\n    ${o ? `<div style="display:flex;flex-wrap:wrap;gap:5px;">${o}</div>` : ""}\n  `),
+        ((s.innerHTML = `\n    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:${o ? "6px" : "0"};">\n      <span class="carb-badge ${a.carb}" style="font-size:10px;padding:4px 10px;">${{ potato: "🥔 Potato", rice: "🍚 Rice", noodle: "🍜 Noodle", bread: "🫓 Bread" }[a.carb]}</span>\n      <span class="protein-badge ${n}" style="font-size:10px;padding:4px 10px;">${i}</span>\n      <span class="flavor-badge ${a.flavor || "savory"}" style="font-size:10px;padding:4px 10px;">${"sweet" === a.flavor ? "🍯 Sweet" : "🧂 Savory"}</span>\n      ${ALCOHOL_RECIPE_IDS.has(a.id) ? '<span class="flavor-badge alcohol" style="font-size:10px;padding:4px 10px;">🍶 Alcohol</span>' : ""}\n      ${SPICY_RECIPE_IDS.has(a.id) ? '<span class="flavor-badge spicy" style="font-size:10px;padding:4px 10px;">🌶️ Spicy</span>' : ""}\n    </div>\n    ${o ? `<div style="display:flex;flex-wrap:wrap;gap:5px;">${o}</div>` : ""}\n  `),
           (modalServings = weights.servings), updateModalMacros(a));
         const r = getRecipeDetail(a),
           c = document.getElementById("modalTabs");
@@ -7199,7 +7250,8 @@
           ],
         },
         INGREDIENT_RECIPE_MAP = {},
-                ALCOHOL_RECIPE_IDS = new Set();
+                ALCOHOL_RECIPE_IDS = new Set(),
+                SPICY_RECIPE_IDS = new Set();
       let disabledIngredients = new Set(JSON.parse(localStorage.getItem("pantryDisabled") || "[]"));
       function savePantry() {
         try {
@@ -7585,7 +7637,7 @@
             r = Math.round(a.f + t.f);
           ((n.querySelector(".card-title").textContent = e.title),
             (n.querySelector(".card-desc").textContent = e.desc));
-          const c = n.querySelector(".card-num");
+          const c = n.querySelector(".card-num-inline");
           c && (c.textContent = "#" + String(editingRecipeId).padStart(3, "0"));
           const l = n.querySelector('[data-macro="kcal"]');
           l && (l.textContent = i);
@@ -7715,6 +7767,13 @@
         ((document.getElementById("calc2Tip").innerHTML = v[c2Goal]),
           document.getElementById("calc2Results").classList.add("show"),
           document.getElementById("calc2Results").scrollIntoView({ behavior: "smooth", block: "start" }));
+      }
+      function setSpicyFilter(a) {
+        spicyFilter = !spicyFilter;
+        a.classList.toggle("active", spicyFilter);
+        const t = document.getElementById("pillCuisine");
+        t && (spicyFilter || "all" !== currentCuisineFilter || "all" !== flavorFilter ? t.classList.add("has-active") : t.classList.remove("has-active"));
+        filterRecipes();
       }
       function setFlavorFilter(e, a) {
         ((flavorFilter = e),
@@ -8195,6 +8254,9 @@
          ...(INGREDIENT_RECIPE_MAP.mirin || []),
          ...(INGREDIENT_RECIPE_MAP.white_wine || [])
         ].forEach(id => ALCOHOL_RECIPE_IDS.add(id));
+        // Rebuild SPICY_RECIPE_IDS from recipe tags
+        SPICY_RECIPE_IDS.clear();
+        R.forEach(r => { if (r.tags && r.tags.includes("spicy")) SPICY_RECIPE_IDS.add(r.id); });
       }
 
       let compareSortKey = "default",
@@ -8502,20 +8564,33 @@
       function shareRecipe() {
         if (!currentModalRecipe) return;
         const e = new URL(window.location.href);
-        (e.searchParams.set("recipe", currentModalRecipe.id),
-          navigator.clipboard
-            .writeText(e.toString())
-            .then(() => {
-              const e = document.getElementById("modalShareBtn");
-              (e.classList.add("copied"),
-                (e.innerHTML = '<span class="share-icon">✓</span> Copied!'),
-                setTimeout(() => {
-                  (e.classList.remove("copied"), (e.innerHTML = '<span class="share-icon">🔗</span> Share'));
-                }, 2e3));
-            })
-            .catch(() => {
-              prompt("Copy this link:", e.toString());
-            }));
+        e.searchParams.set("recipe", currentModalRecipe.id);
+        const url = e.toString();
+        const btn = document.getElementById("modalShareBtn");
+        function markCopied() {
+          btn.classList.add("copied");
+          btn.innerHTML = '<span class="share-icon">✓</span> Copied!';
+          setTimeout(() => { btn.classList.remove("copied"); btn.innerHTML = '<span class="share-icon">🔗</span> Share'; }, 2000);
+        }
+        function fallbackCopy() {
+          try {
+            const ta = document.createElement("textarea");
+            ta.value = url;
+            ta.style.cssText = "position:fixed;top:-9999px;left:-9999px;opacity:0;";
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            ta.setSelectionRange(0, 99999);
+            const ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+            if (ok) { markCopied(); } else { prompt("Copy this link:", url); }
+          } catch(err) { prompt("Copy this link:", url); }
+        }
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(url).then(markCopied).catch(fallbackCopy);
+        } else {
+          fallbackCopy();
+        }
       }
       function openHowItWorksModal() {
         (document.getElementById("hiwOverlay").classList.add("open"), (document.body.style.overflow = "hidden"));
