@@ -6179,7 +6179,7 @@
         (R.forEach((e) => {
           const i = document.createElement("div");
           ((i.className = "card"), (i.dataset.id = e.id), (i.dataset.id = e.id), (i.onclick = () => openModal(e.id)));
-          const n = e.tags.map((e) => `<span class="tag tag-${e}">${e.replace("-", " ")}</span>`).join(""),
+          const n = e.tags.filter(t => t !== "spicy").map((e) => `<span class="tag tag-${e}">${e.replace("-", " ")}</span>`).join(""),
             s = e.protein || "chicken",
             o =
               { chicken: "🍗 Chicken", beef: "🥩 Beef", eggs: "🥚 Eggs", fish: "🐟 Fish", tofu: "🫘 Tofu" }[s] ||
@@ -6691,7 +6691,7 @@
             "🍗 Chicken",
           n = { chicken: "chicken", beef: "beef", eggs: "eggs", salmon: "salmon", tofu: "tofu" }[t] || "chicken",
           s = document.getElementById("modalTagsRow"),
-          o = (a.tags || []).map((e) => `<span class="tag tag-${e}">${e}</span>`).join("");
+          o = (a.tags || []).filter(e => e !== "spicy").map((e) => `<span class="tag tag-${e}">${e}</span>`).join("");
         ((s.innerHTML = `\n    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:${o ? "6px" : "0"};">\n      <span class="carb-badge ${a.carb}" style="font-size:10px;padding:4px 10px;">${{ potato: "🥔 Potato", rice: "🍚 Rice", noodle: "🍜 Noodle", bread: "🫓 Bread" }[a.carb]}</span>\n      <span class="protein-badge ${n}" style="font-size:10px;padding:4px 10px;">${i}</span>\n      <span class="flavor-badge ${a.flavor || "savory"}" style="font-size:10px;padding:4px 10px;">${"sweet" === a.flavor ? "🍯 Sweet" : "🧂 Savory"}</span>\n      ${ALCOHOL_RECIPE_IDS.has(a.id) ? '<span class="flavor-badge alcohol" style="font-size:10px;padding:4px 10px;">🍶 Alcohol</span>' : ""}\n      ${SPICY_RECIPE_IDS.has(a.id) ? '<span class="flavor-badge spicy" style="font-size:10px;padding:4px 10px;">🌶️ Spicy</span>' : ""}\n    </div>\n    ${o ? `<div style="display:flex;flex-wrap:wrap;gap:5px;">${o}</div>` : ""}\n  `),
           (modalServings = weights.servings), updateModalMacros(a));
         const r = getRecipeDetail(a),
