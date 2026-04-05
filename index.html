@@ -2245,10 +2245,10 @@
         display: flex;
         align-items: center;
         gap: 0;
-        margin-left: 0;
-      }
-      .serving-control .serving-stepper {
         margin-left: auto;
+      }
+      .modal-weight-row .serving-stepper {
+        margin-left: 0;
       }
       .step-btn {
         width: 30px;
@@ -6858,7 +6858,9 @@
             )
             .join(
               "",
-            )}\n    </div>\n    <div class="modal-weight-row">\n    <div class="modal-weight-row-main" style="display:flex;align-items:center;gap:12px;">\n      <label style="min-width:90px;">&#x1F95A; Egg Count</label>\n      <div class="serving-stepper" style="height:36px;margin-left:0;">\n        <button class="step-btn" onclick="changeModalEggCount(-1, '${e.id}')">&#x2212;</button>\n        <span class="serving-val" id="modalEggCountVal" style="width:36px;height:36px;line-height:36px;font-size:16px;">${eggCount}</span>\n        <button class="step-btn" onclick="changeModalEggCount(1, '${e.id}')">+</button>\n      </div>\n      <span class="modal-weight-hint">${p}g per portion</span>\n    </div>\n    </div>`;\n        }\n        let y = `\n  <div class="serving-control">\n    <label>🍽️ Servings</label>\n    <div class="serving-stepper">\n      <button class="step-btn" onclick="changeModalServings(-1, '${e.id}')">−</button>\n      <span class="serving-val" id="modalServingVal">${i}</span>\n      <button class="step-btn" onclick="changeModalServings(1, '${e.id}')">+</button>\n    </div>\n    <span class="modal-weight-hint">per portion</span>\n  </div>\n  ${g}\n  ${
+            )}\n    </div>\n    <div class="modal-weight-row">\n      <label>🥚 Egg Count</label>\n      <div class="serving-stepper">\n        <button class="step-btn" onclick="changeModalEggCount(-1, '${e.id}')">−</button>\n        <span class="serving-val" id="modalEggCountVal" style="width:36px;height:30px;line-height:30px;font-size:16px;">${eggCount}</span>\n        <button class="step-btn" onclick="changeModalEggCount(1, '${e.id}')">+</button>\n      </div>\n      \n      <span class="modal-weight-hint">${p}g per portion</span>\n    </div>`;
+        }
+        let y = `\n  <div class="serving-control">\n    <label>🍽️ Servings</label>\n    <div class="serving-stepper">\n      <button class="step-btn" onclick="changeModalServings(-1, '${e.id}')">−</button>\n      <span class="serving-val" id="modalServingVal">${i}</span>\n      <button class="step-btn" onclick="changeModalServings(1, '${e.id}')">+</button>\n    </div>\n    <span class="modal-weight-hint">per portion</span>\n  </div>\n  ${g}\n  ${
             o
               ? k
               : (() => {
