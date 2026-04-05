@@ -1001,6 +1001,14 @@
         align-items: flex-start;
         margin-bottom: 6px;
       }
+      .modal-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 1px;
+        opacity: 0.8;
+        margin-right: 10px;
+      }
       .card-num {
         font-family: "Bebas Neue", sans-serif;
         font-size: 11px;
@@ -5135,7 +5143,7 @@
           <span class="share-icon">🔗</span> Share
         </button>
         <div class="modal-header">
-          <div class="modal-meta"><span class="card-time" id="modalTime"></span></div>
+          <div class="modal-meta"><span class="modal-num" id="modalNum"></span><span class="card-time" id="modalTime"></span></div>
           <div class="modal-title" id="modalTitle"></div>
           <div class="modal-header-collapsible" id="modalCollapsible">
             <div class="modal-desc" id="modalDesc"></div>
@@ -6680,6 +6688,7 @@
         const a = R.find((a) => a.id === e);
         if (!a) return;
         ((currentModalRecipe = a),
+          (document.getElementById("modalNum").textContent = "#" + String(a.displayNum).padStart(3, "0")),
           (document.getElementById("modalTitle").textContent = a.title),
           (document.getElementById("modalDesc").textContent = a.desc),
           (function(){ const hb=document.getElementById("modalHintBox"),ht=document.getElementById("modalHintText"); if(a.hint){ht.textContent=a.hint;hb.style.display="flex";}else{hb.style.display="none";ht.textContent="";} })(),
