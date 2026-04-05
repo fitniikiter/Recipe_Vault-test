@@ -445,7 +445,7 @@ const R = [
   sauce_p: 3,
   sauce_c: 9,
   sauce_f: 6,
-  hint: "hallo welt",
+  hint: "",
 },
 {
   id: "honey-garlic-chicken-noodles",
