@@ -1441,7 +1441,7 @@ const R = [
   id: "japanese-tamagoyaki-rice-bowl",
   protein: "eggs",
   displayNum: 68,
-  carb: "potato",
+  carb: "rice",
   time: 20,
   title: "Japanese Tamagoyaki Rice Bowl",
   desc: "Layered sweet-savory rolled omelette sliced over steamed rice with soy dipping sauce and pickled ginger.",
@@ -4278,7 +4278,7 @@ const RECIPE_DETAILS = {
     video: "",
     ingredients: [
       { section: "Frittata", items: [
-        { name: "Whole eggs", amt: "{{proteinG_as_eggs}} eggs" },
+        { name: "Whole eggs", amt: "{{proteinG}}g raw" },
         { name: "Baby spinach", amt: "100g" },
         { name: "Feta cheese (crumbled)", amt: "40g" },
         { name: "Cherry tomatoes (halved)", amt: "8 pieces" },
@@ -4311,7 +4311,7 @@ const RECIPE_DETAILS = {
     video: "",
     ingredients: [
       { section: "Menemen", items: [
-        { name: "Whole eggs", amt: "{{proteinG_as_eggs}} eggs" },
+        { name: "Whole eggs", amt: "{{proteinG}}g raw" },
         { name: "Green pepper (diced)", amt: "1 whole" },
         { name: "Onion (diced)", amt: "½ whole" },
         { name: "Canned chopped tomatoes", amt: "250g" },
@@ -4347,7 +4347,7 @@ const RECIPE_DETAILS = {
     video: "",
     ingredients: [
       { section: "Tamagoyaki", items: [
-        { name: "Whole eggs", amt: "{{proteinG_as_eggs}} eggs" },
+        { name: "Whole eggs", amt: "{{proteinG}}g raw" },
         { name: "Mirin", amt: "1 tbsp" },
         { name: "Soy sauce (low-sodium)", amt: "1 tsp" },
         { name: "Sugar", amt: "1 tsp" },
@@ -4384,7 +4384,7 @@ const RECIPE_DETAILS = {
     video: "",
     ingredients: [
       { section: "Steamed Eggs", items: [
-        { name: "Whole eggs", amt: "{{proteinG_as_eggs}} eggs" },
+        { name: "Whole eggs", amt: "{{proteinG}}g raw" },
         { name: "Chicken or anchovy broth", amt: "180ml" },
         { name: "Fish sauce", amt: "1 tsp" },
         { name: "Gochugaru (Korean chili flakes)", amt: "1 tsp" },
@@ -4427,7 +4427,7 @@ const RECIPE_DETAILS = {
         { name: "Salt", amt: "to taste" },
       ]},
       { section: "Eggs", items: [
-        { name: "Whole eggs", amt: "{{proteinG_as_eggs}} eggs" },
+        { name: "Whole eggs", amt: "{{proteinG}}g raw" },
         { name: "Feta cheese (crumbled)", amt: "30g" },
       ]},
       { section: "Side", items: [
