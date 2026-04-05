@@ -2202,6 +2202,9 @@
         font-size: 12px;
         color: var(--muted);
       }
+      .modal-weight-row:has(.serving-stepper) .modal-weight-unit {
+        display: none;
+      }
       .modal-weight-hint {
         font-size: 10px;
         color: #444;
@@ -2249,6 +2252,15 @@
       }
       .modal-weight-row .serving-stepper {
         margin-left: 0;
+      }
+      .modal-weight-row .serving-val {
+        width: 36px !important;
+        height: 30px !important;
+        line-height: 30px !important;
+        font-size: 16px !important;
+      }
+      .modal-weight-row label {
+        min-width: 90px;
       }
       .step-btn {
         width: 30px;
@@ -6858,7 +6870,7 @@
             )
             .join(
               "",
-            )}\n    </div>\n    <div class="modal-weight-row">\n      <label>🥚 Egg Count</label>\n      <div class="serving-stepper">\n        <button class="step-btn" onclick="changeModalEggCount(-1, '${e.id}')">−</button>\n        <span class="serving-val" id="modalEggCountVal" style="width:36px;height:30px;line-height:30px;font-size:16px;">${eggCount}</span>\n        <button class="step-btn" onclick="changeModalEggCount(1, '${e.id}')">+</button>\n      </div>\n      \n      <span class="modal-weight-hint">${p}g per portion</span>\n    </div>`;
+            )}\n    </div>\n    <div class="modal-weight-row">\n      <label>🥚 Egg Count</label>\n      <div class="serving-stepper">\n        <button class="step-btn" onclick="changeModalEggCount(-1, '${e.id}')">−</button>\n        <span class="serving-val" id="modalEggCountVal" style="width:40px;height:36px;line-height:36px;font-size:20px;">${eggCount}</span>\n        <button class="step-btn" onclick="changeModalEggCount(1, '${e.id}')">+</button>\n      </div>\n      <span class="modal-weight-unit">eggs</span>\n      <span class="modal-weight-hint">${p}g per portion</span>\n    </div>`;
         }
         let y = `\n  <div class="serving-control">\n    <label>🍽️ Servings</label>\n    <div class="serving-stepper">\n      <button class="step-btn" onclick="changeModalServings(-1, '${e.id}')">−</button>\n      <span class="serving-val" id="modalServingVal">${i}</span>\n      <button class="step-btn" onclick="changeModalServings(1, '${e.id}')">+</button>\n    </div>\n    <span class="modal-weight-hint">per portion</span>\n  </div>\n  ${g}\n  ${
             o
