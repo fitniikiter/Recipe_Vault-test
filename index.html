@@ -2023,6 +2023,42 @@
         color: #555;
         margin-top: 6px;
       }
+      .imc-section-lbl {
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--muted);
+        margin-top: 9px;
+        margin-bottom: 3px;
+        padding-left: 2px;
+        opacity: 0.7;
+      }
+      .imc-ext-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+      }
+      .imc-ext-cell {
+        background: var(--surface);
+        border-radius: 5px;
+        padding: 5px 4px;
+        text-align: center;
+      }
+      .imc-ext-cell .imc-ext-val {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 13px;
+        line-height: 1;
+        display: block;
+        color: var(--fg);
+      }
+      .imc-ext-cell .imc-ext-lbl {
+        font-size: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        color: var(--muted);
+        display: block;
+        margin-top: 2px;
+      }
       .ing-total-bar {
         background: var(--surface);
         border: 1px solid var(--border);
@@ -5450,6 +5486,9 @@
         if (!i) return null;
         const n = i / 100,
           s = 7 * (t.a || 0) * n;
+        const db = (typeof NUTRITION_DB !== "undefined") ? NUTRITION_DB[e] : null;
+        const sg = (v) => v != null ? Math.round(v * n * 10) / 10 : null;
+        const si = (v) => v != null ? Math.round(v * n) : null;
         return {
           grams: Math.round(i),
           kcal: Math.round(t.kcal * n + s),
@@ -5457,7 +5496,53 @@
           c: Math.round(t.c * n * 10) / 10,
           f: Math.round(t.f * n * 10) / 10,
           a: t.a ? Math.round((t.a || 0) * n * 10) / 10 : 0,
+          fiber:       db ? sg(db.fiber)       : null,
+          sugar:       db ? sg(db.sugar)       : null,
+          sat_fat:     db ? sg(db.sat_fat)     : null,
+          cholesterol: db ? si(db.cholesterol) : null,
+          sodium:      db ? si(db.sodium)      : null,
+          potassium:   db ? si(db.potassium)   : null,
+          calcium:     db ? si(db.calcium)     : null,
+          iron:        db ? sg(db.iron)        : null,
+          magnesium:   db ? si(db.magnesium)   : null,
+          zinc:        db ? sg(db.zinc)        : null,
+          vitamin_a:   db ? si(db.vitamin_a)   : null,
+          vitamin_c:   db ? sg(db.vitamin_c)   : null,
+          vitamin_d:   db ? sg(db.vitamin_d)   : null,
+          vitamin_b12: db ? sg(db.vitamin_b12) : null,
+          folate:      db ? si(db.folate)      : null,
         };
+      }
+      function ingNutrHTML(g) {
+        const cell = (v, lbl, unit) => v != null
+          ? `<div class="imc-ext-cell"><span class="imc-ext-val">${v}${unit}</span><span class="imc-ext-lbl">${lbl}</span></div>`
+          : "";
+        const ext = [
+          cell(g.fiber, "Fiber", "g"),
+          cell(g.sugar, "Sugar", "g"),
+          cell(g.sat_fat, "Sat Fat", "g"),
+          cell(g.cholesterol, "Cholest", "mg"),
+          cell(g.sodium, "Sodium", "mg"),
+          cell(g.potassium, "Potass", "mg"),
+        ].join("");
+        const min = [
+          cell(g.calcium, "Calcium", "mg"),
+          cell(g.iron, "Iron", "mg"),
+          cell(g.magnesium, "Magnes", "mg"),
+          cell(g.zinc, "Zinc", "mg"),
+        ].join("");
+        const vit = [
+          cell(g.vitamin_a, "Vit A", "µg"),
+          cell(g.vitamin_c, "Vit C", "mg"),
+          cell(g.vitamin_d, "Vit D", "µg"),
+          cell(g.vitamin_b12, "B12", "µg"),
+          cell(g.folate, "Folate", "µg"),
+        ].join("");
+        let html = "";
+        if (ext) html += `<div class="imc-section-lbl">Extended</div><div class="imc-ext-grid">${ext}</div>`;
+        if (min) html += `<div class="imc-section-lbl">Minerals</div><div class="imc-ext-grid">${min}</div>`;
+        if (vit) html += `<div class="imc-section-lbl">Vitamins</div><div class="imc-ext-grid">${vit}</div>`;
+        return html;
       }
       function loadHiddenIds() {
         try {
@@ -6923,7 +7008,7 @@
               if (g) {
                 ((_ = !0), (b += g.kcal), (f += g.p), (v += g.c), (w += g.f));
                 Math.random().toString(36).slice(2, 7);
-                y += `<li class="has-macros" onclick="toggleIngMacro(this)">\n          <div class="ing-main-row">\n            <span class="ing-item-name">${m}</span>\n            <div style="display:flex;align-items:center;gap:8px;">\n              <span class="ing-item-amt">${d}</span>\n              <span class="ing-expand-icon">▼</span>\n            </div>\n          </div>\n          <div class="ing-macro-panel">\n            <div class="ing-macro-grid">\n              <div class="ing-macro-cell mk"><span class="imc-val">${g.kcal}</span><span class="imc-lbl">kcal</span></div>\n              <div class="ing-macro-cell mp"><span class="imc-val">${g.p}g</span><span class="imc-lbl">protein</span></div>\n              <div class="ing-macro-cell mc"><span class="imc-val">${g.c}g</span><span class="imc-lbl">carbs</span></div>\n              <div class="ing-macro-cell mf"><span class="imc-val">${g.f}g</span><span class="imc-lbl">fat</span></div>\n              ${g.a > 0 ? `<div class="ing-macro-cell ma"><span class="imc-val">${g.a}g</span><span class="imc-lbl">alcohol</span></div>` : ""}\n            </div>\n            <div class="ing-macro-hint">${i > 1 ? `${i} servings` : "Per portion"} · based on ${g.grams}g</div>\n          </div>\n        </li>`;
+                y += `<li class="has-macros" onclick="toggleIngMacro(this)">\n          <div class="ing-main-row">\n            <span class="ing-item-name">${m}</span>\n            <div style="display:flex;align-items:center;gap:8px;">\n              <span class="ing-item-amt">${d}</span>\n              <span class="ing-expand-icon">▼</span>\n            </div>\n          </div>\n          <div class="ing-macro-panel">\n            <div class="ing-macro-grid">\n              <div class="ing-macro-cell mk"><span class="imc-val">${g.kcal}</span><span class="imc-lbl">kcal</span></div>\n              <div class="ing-macro-cell mp"><span class="imc-val">${g.p}g</span><span class="imc-lbl">protein</span></div>\n              <div class="ing-macro-cell mc"><span class="imc-val">${g.c}g</span><span class="imc-lbl">carbs</span></div>\n              <div class="ing-macro-cell mf"><span class="imc-val">${g.f}g</span><span class="imc-lbl">fat</span></div>\n              ${g.a > 0 ? `<div class="ing-macro-cell ma"><span class="imc-val">${g.a}g</span><span class="imc-lbl">alcohol</span></div>` : ""}\n            </div>\n            ${ingNutrHTML(g)}\n            <div class="ing-macro-hint">${i > 1 ? `${i} servings` : "Per portion"} · based on ${g.grams}g</div>\n          </div>\n        </li>`;
               } else
                 y += `<li><div class="ing-main-row"><span class="ing-item-name">${m}</span><span class="ing-item-amt">${d}</span></div></li>`;
             }),
